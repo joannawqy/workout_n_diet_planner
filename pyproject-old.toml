@@ -1,0 +1,23 @@
+[project]
+name = "hw1_digital_twin_lite_joanna"
+version = "0.1.0"
+description = "hw1-digital-twin-lite-joanna using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]>=0.186.1,<1.0.0"
+]
+
+[project.scripts]
+hw1_digital_twin_lite_joanna = "hw1_digital_twin_lite_joanna.main:run"
+run_crew = "hw1_digital_twin_lite_joanna.main:run"
+train = "hw1_digital_twin_lite_joanna.main:train"
+replay = "hw1_digital_twin_lite_joanna.main:replay"
+test = "hw1_digital_twin_lite_joanna.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

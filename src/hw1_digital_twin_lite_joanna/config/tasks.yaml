@@ -1,0 +1,44 @@
+build_datamart_task:
+  description: >
+    Build/refresh a tidy personal datamart for {week_iso} that unifies workouts,
+    baking logs, recipes, pantry/inventory, and nutrition lookups. Ingest from
+    APIs/CSVs/Sheets, normalize units and timestamps, standardize keys
+    (e.g., recipe_id, session_id, date), and enrich with computed metrics
+    (workout_volume, intensity_zone, pr_flag, per-serving macros). Publish
+    curated DuckDB/Parquet tables (workouts_daily, workouts_sessions, bakes,
+    recipes, pantry, metrics_weekly) and a lightweight data dictionary.
+  expected_output: >
+    A Markdown checklist including:
+      - Table inventory with paths ({warehouse_path}), schemas, and row counts.
+      - Data quality summary (freshness, duplicates, missingness) for each table.
+      - List of derived fields with precise definitions and formulas.
+      - Run metadata (started_at, finished_at, source files touched, row deltas).
+      - Handoff note to Sage describing where to find the curated tables for {week_iso}.
+  agent: dex
+
+weekly_twin_report_task:
+  description: >
+    Generate a concise weekly insight brief for {week_iso} from Dex’s curated
+    datamart (default to R for analysis/plots). Analyze training load and
+    intensity balance, flag PR readiness or recovery risks, summarize baking
+    activity and macro profiles, and produce a pantry-aware “what to bake next”
+    suggestion. Propose one micro-experiment for next week and two concrete to-dos
+    (one workout, one baking). Reference the current year {current_year} where relevant.
+  expected_output: >
+    A one-page report formatted as markdown without '```' containing:
+      # Weekly Twin Report — {week_iso}
+      ## Executive Summary
+      - (3 bullets with the most important takeaways)
+      ## Workout Insights
+      - Volume & intensity trend summary
+      - Readiness/recovery notes and any PR flags
+      ## Baking Insights
+      - Recipe macro highlights and notable outcomes
+      ## Pantry-Aware Suggestion
+      - “What to bake next” (recipe name, why it fits, key ingredients)
+      ## Micro-Experiment for Next Week
+      - Hypothesis, small change to test, success metric
+      ## To-Dos
+      - [ ] Workout: <action>
+      - [ ] Baking: <action>
+  agent: sage
