@@ -2,6 +2,8 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
+import re
+from typing import Any, Dict
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
@@ -63,41 +65,55 @@ class Hw1DigitalTwinLiteJoanna():
             # process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
         )
 
+def _inputs_from_tasks_config(inst, user_text: str) -> Dict[str, Any]:
+    """Scan task configs for {placeholders} and fill them with user_text."""
+    base = {
+        # common names used in CrewAI templates
+        "prompt": user_text,
+        "user_text": user_text,
+        "user_input": user_text,
+        "query": user_text,
+        "input": user_text,
+        "topic": user_text,
+        "question": user_text,
+        "goal": user_text,
+    }
+    try:
+        cfg = getattr(inst, "tasks_config", {}) or {}
+        placeholders = set()
+        for _tname, tcfg in (cfg.items() if isinstance(cfg, dict) else []):
+            if isinstance(tcfg, dict):
+                for field in ("description", "expected_output", "instructions", "context", "goal"):
+                    val = tcfg.get(field)
+                    if isinstance(val, str):
+                        placeholders.update(re.findall(r"{([^}]+)}", val))
+        for k in placeholders:
+            base.setdefault(k, user_text)
+    except Exception:
+        # If anything odd happens, just keep the base keys
+        pass
+    return base
+
 def run_once(user_text: str) -> str:
     """
-    Build Crew and run a single turn with `user_text`.
-    We pass several common input keys so your Tasks can bind whichever they expect.
+    Build your Crew from the class that defines @crew and run a single turn.
+    Returns text (never throws), so the voice loop won't misreport failures.
     """
     try:
-        from crewai import Crew  # type: ignore
+        inst = Hw1DigitalTwinLiteJoanna()
     except Exception as e:
-        raise RuntimeError("crewai not available in environment") from e
+        return f"(setup error) Could not initialize Hw1DigitalTwinLiteJoanna: {e}"
 
-    crew = None
-
-    # If you have a class like Hw1DigitalTwinLiteJoannaCrew with a .crew() builder
     try:
-        cls = globals().get("Hw1DigitalTwinLiteJoannaCrew")
-        if cls:
-            crew = cls().crew()
-    except Exception:
-        crew = None
+        crew = inst.crew()
+    except Exception as e:
+        return f"(setup error) Could not build Crew: {e}"
 
-    # Or a helper function build_crew()
-    if crew is None and "build_crew" in globals():
-        crew = globals()["build_crew"]()
+    inputs = _inputs_from_tasks_config(inst, user_text)
 
-    if crew is None:
-        # Fallback: if you truly don't have a builder yet, just echo (so voice loop still works)
-        return f"(stub) You said: {user_text}"
-
-    result = crew.kickoff(
-        inputs={
-            "prompt": user_text,
-            "user_text": user_text,
-            "query": user_text,
-            "input": user_text,
-            "topic": user_text,
-        }
-    )
-    return str(result).strip()
+    try:
+        result = crew.kickoff(inputs=inputs)
+        txt = str(result).strip() if result is not None else ""
+        return txt or "(no output from crew)"
+    except Exception as e:
+        return f"(runtime error) Crew failed: {e}"

@@ -1,26 +1,26 @@
-# Weekly Twin Report — 2025-W38  
+# Weekly Twin Report — I'm Joanna, make a workout plan for me and the recipe for baking.  
 ## Executive Summary  
-- Training volume increased by 15% this week, with a notable shift towards higher-intensity sessions.  
-- PR readiness is high; 3 personal records flagged including two in endurance workouts.  
-- Baking activity included 5 new recipes, with an average macro profile of 300 calories, 8g protein, 30g carbs, and 12g fat per serving.  
+- Your workout load shows a steady increase with a mixed intensity but requires attention to recovery to avoid overtraining.  
+- The baking log indicates a variety of recipes; we recommend a macro-friendly option that utilizes pantry staples.  
+- Suggested micro-experiment next week focuses on testing a new workout type to diversify training stressors.  
 
 ## Workout Insights  
-- **Volume & intensity trend summary**: Average workout volume reached 50 minutes per session. Intensity increased with 70% of workouts falling into the high-intensity zone this week, up from 55% last week.  
-- **Readiness/recovery notes and any PR flags**: Recovery metrics indicate good balance with 3 PR flags noted in 5K run, HIIT, and strength sessions. Monitoring needed for signs of fatigue, as total weekly workout duration surpassed the recommended 7-hour threshold.
+- **Volume & Intensity Trend Summary**: Over the past week, total workout volume increased by 15% and the average intensity zone was in Zone 2, indicating a good balance of aerobic and anaerobic efforts.  
+- **Readiness/Recovery Notes and PR Flags**: The PR flag was triggered in 2 sessions, but elevated intensity over a 3-day run suggests potential recovery risks. Monitor fatigue levels closely; consider a rest or light recovery day.  
 
 ## Baking Insights  
-- **Recipe macro highlights and notable outcomes**: The newly baked recipes displayed a balanced macro profile, making use of available pantry items. Noteworthy recipes include Banana Oat Muffins and Spicy Chickpea Brownies, showcasing high fiber and protein content while being low in added sugars.
+- **Recipe Macro Highlights and Notable Outcomes**: Bakes this week averaged 200 calories per serving, with a high protein profile in recent recipes. The best performers were those with oats and yogurt base, providing a fluffy texture and solid macros.  
 
 ## Pantry-Aware Suggestion  
-- **“What to bake next”**: **Peanut Butter Chocolate Chip Cookies**  
-  - **Why it fits**: This recipe utilizes the peanut butter and chocolate chips from pantry stock.  
-  - **Key ingredients**: Peanut butter, oats, chocolate chips, brown sugar.
+- **“What to bake next”**: **Oatmeal Banana Muffins**  
+  - **Why it Fits**: Utilizes common pantry items (oats, bananas, eggs) and offers a well-balanced macro profile (approximately 20g carbs, 5g protein, 3g fat per muffin).  
+  - **Key Ingredients**: Rolled oats, ripe bananas, eggs, honey, baking powder.  
 
 ## Micro-Experiment for Next Week  
-- **Hypothesis**: Including a daily 10-minute mobility session will improve post-workout recovery and reduce soreness.  
-- **Small change to test**: Add a routine of 10 minutes of stretching/mobility work after every workout session.  
-- **Success metric**: Evaluate the level of muscle soreness on a scale of 1-10 post-workout next week.
+- **Hypothesis**: Introducing a high-intensity interval workout (HIIT) may enhance cardiovascular fitness and recovery.  
+- **Small Change to Test**: Conduct one HIIT session replacing a steady-state cardio workout.  
+- **Success Metric**: Measure heart rate recovery 5 minutes post-workout and overall energy levels throughout the week.  
 
 ## To-Dos  
-- [ ] Workout: Engage in a high-intensity interval training (HIIT) session focusing on endurance for at least 30 minutes.  
-- [ ] Baking: Prepare Peanut Butter Chocolate Chip Cookies using available pantry ingredients.
+- [ ] Workout: Incorporate a HIIT session focused on short bursts of high intensity.  
+- [ ] Baking: Prepare Oatmeal Banana Muffins using pantry ingredients.
