@@ -1,6 +1,6 @@
 [project]
 name = "hw1_digital_twin_lite_joanna"
-version = "0.1.0"
+version = "0.2.0"
 description = "hw1-digital-twin-lite-joanna using crewAI"
 authors = [
     { name = "Your Name", email = "you@example.com" },
@@ -10,12 +10,24 @@ dependencies = [
     "crewai[tools]>=0.186.1,<1.0.0",
 ]
 
+[project.optional-dependencies]
+voice = [
+  "faster-whisper>=1.0.0",
+  "kokoro>=0.8.0",
+  "soundfile>=0.12",
+  "sounddevice>=0.4",
+  "webrtcvad>=2.0.10",
+  "simpleaudio>=1.0.4",
+  "numpy>=1.24"
+]
+
 [project.scripts]
 hw1_digital_twin_lite_joanna = "hw1_digital_twin_lite_joanna.main:run"
 run_crew = "hw1_digital_twin_lite_joanna.main:run"
 train = "hw1_digital_twin_lite_joanna.main:train"
 replay = "hw1_digital_twin_lite_joanna.main:replay"
 test = "hw1_digital_twin_lite_joanna.main:test"
+voice-chat = "hw1_digital_twin_lite_joanna.voice_chat:main"
 
 [build-system]
 requires = [
@@ -25,3 +37,4 @@ build-backend = "hatchling.build"
 
 [tool.crewai]
 type = "crew"
+

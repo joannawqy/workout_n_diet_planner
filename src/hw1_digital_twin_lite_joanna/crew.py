@@ -62,3 +62,42 @@ class Hw1DigitalTwinLiteJoanna():
             verbose=True,
             # process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
         )
+
+def run_once(user_text: str) -> str:
+    """
+    Build Crew and run a single turn with `user_text`.
+    We pass several common input keys so your Tasks can bind whichever they expect.
+    """
+    try:
+        from crewai import Crew  # type: ignore
+    except Exception as e:
+        raise RuntimeError("crewai not available in environment") from e
+
+    crew = None
+
+    # If you have a class like Hw1DigitalTwinLiteJoannaCrew with a .crew() builder
+    try:
+        cls = globals().get("Hw1DigitalTwinLiteJoannaCrew")
+        if cls:
+            crew = cls().crew()
+    except Exception:
+        crew = None
+
+    # Or a helper function build_crew()
+    if crew is None and "build_crew" in globals():
+        crew = globals()["build_crew"]()
+
+    if crew is None:
+        # Fallback: if you truly don't have a builder yet, just echo (so voice loop still works)
+        return f"(stub) You said: {user_text}"
+
+    result = crew.kickoff(
+        inputs={
+            "prompt": user_text,
+            "user_text": user_text,
+            "query": user_text,
+            "input": user_text,
+            "topic": user_text,
+        }
+    )
+    return str(result).strip()

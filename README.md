@@ -15,6 +15,11 @@ Design the contract before the code: stable table names, a short data dictionary
 
 Welcome to the Hw1DigitalTwinLiteJoanna Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
 
+## 🎤 Voice mode (STT+TTS)
+
+This repo supports speech input (Whisper via `faster-whisper`) and spoken replies (Kokoro).
+
+
 ## Installation
 
 Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
@@ -23,6 +28,11 @@ First, if you haven't already, install uv:
 
 ```bash
 pip install uv
+```
+
+### Install extras
+```bash
+uv sync --extra voice
 ```
 
 Next, navigate to your project directory and install the dependencies:
